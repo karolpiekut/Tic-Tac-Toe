@@ -1,0 +1,38 @@
+html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    height: 100%;
+    font-family: "Roboto Light", Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    display: block;
+}
+
+#the-board {
+    background-color: #ebf6ff;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;
+    height: 306px;
+    width: 306px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 250px;
+    border: 1px black solid;
+}
+
+.board-field {
+    height: 100px;
+    width: 100px;
+    border: 1px black solid;
+    border-collapse: collapse;
+}
+
+
+
+
+
