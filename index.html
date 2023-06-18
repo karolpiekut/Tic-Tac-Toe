@@ -6,20 +6,25 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="Style/styles.css" type="text/css">
-    <script src="Script/scripts.js" defer></script>
+    <script src="Scripts/scripts.js" defer></script>
+
     <title>Tic-Tac-Toe</title>
 </head>
-<body>
+<body><!--
+<div id="players">
+    <h1 id="p1">Player1:</h1>
+    <h1 id="p2">Player2:</h1>
+</div>-->
 <div id="the-board">
-    <div class="board-field" id="top-left"></div>
-    <div class="board-field" id="top-mid"></div>
-    <div class="board-field" id="top-right"></div>
-    <div class="board-field" id="mid-left"></div>
-    <div class="board-field" id="mid-mid"></div>
-    <div class="board-field" id="mid-right"></div>
-    <div class="board-field" id="bottom-left"></div>
-    <div class="board-field" id="bottom-mid"></div>
-    <div class="board-field" id="bottom-right"></div>
+    <button class="board-field" value="tl" id="top-left"></button>
+    <button class="board-field" value="tm" id="top-mid"></button>
+    <button class="board-field" value="tr" id="top-right"></button>
+    <button class="board-field" value="ml" id="mid-left"></button>
+    <button class="board-field" value="mm" id="mid-mid"></button>
+    <button class="board-field" value="mr" id="mid-right"></button>
+    <button class="board-field" value="bl" id="bottom-left"></button>
+    <button class="board-field" value="bm" id="bottom-mid"></button>
+    <button class="board-field" value="br" id="bottom-right"></button>
 </div>
 </body>
 </html>
