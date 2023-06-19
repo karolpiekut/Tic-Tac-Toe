@@ -1,0 +1,89 @@
+html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    height: 100%;
+    font-family: "Roboto Light", Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    display: block;
+}
+
+#welcome {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 449px;
+    background-color: #ebf6ff;
+}
+
+h1 {
+    margin: 20px auto 0 auto;
+    padding: 0;
+    font-size: 45px;
+}
+
+h2 {
+    margin: 10px auto 0px auto;
+    padding: 0;
+}
+
+#buttons {
+    margin: 20px auto 10px auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+
+
+.game-type-button {
+    height: 128px;
+    width: 128px;
+    font-size: 20px;
+}
+
+
+#player-names-form {
+    margin: 10px auto 10px auto;
+
+}
+
+#names {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+#players {
+    margin: 0 auto 10px auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+#p1, #p2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    height: 30px;
+    width: 120px;
+    text-align: center;
+}
+
+#play {
+    width: 147px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+}

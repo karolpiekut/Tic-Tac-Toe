@@ -11,6 +11,25 @@ body {
     display: block;
 }
 
+#game-screen {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    height: 449px;
+    width: 400px;
+    background: #e9f2ffff;
+    border: 1px black solid;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h1 {
+    margin: 20px auto 0 auto;
+    padding: 0;
+    font-size: 45px;
+}
+
 #the-board {
     background-color: #ebf6ff;
     display: grid;
@@ -21,11 +40,9 @@ body {
     width: 307px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 250px;
     border: 1px black solid;
     padding: 2px 0 0 2px;
 }
-
 .board-field {
     height: 100px;
     width: 100px;
@@ -33,7 +50,11 @@ body {
     border-collapse: collapse;
 }
 
-
+#reset {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
 
