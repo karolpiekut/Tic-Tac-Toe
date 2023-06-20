@@ -21,13 +21,38 @@ body {
     border: 1px black solid;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
-h1 {
-    margin: 20px auto 0 auto;
-    padding: 0;
-    font-size: 45px;
+#player-score-labels {
+    background: white;
+    margin: 14px 50px 0 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+#p1score, #p2score {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    border: 1px solid black;
+    padding-right: 20px;
+}
+
+#p2score { /*I am lazy*/
+    border-top: 0;
+}
+
+#p1score-number, #p2score-number {
+    text-align: right;
+}
+
+
+h2 {
+    margin: 5px;
+    font-size: 20px;
+
 }
 
 #the-board {
