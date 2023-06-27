@@ -87,3 +87,7 @@ input {
     margin-right: auto;
     font-size: 20px;
 }
+
+.active {
+    background: lightsalmon;
+}
