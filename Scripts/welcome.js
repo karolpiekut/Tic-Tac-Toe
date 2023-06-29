@@ -1,8 +1,3 @@
-//query selectors
-//basic scripts
-
-//cpu greyed out
-
 let gameSelectionTypeButtons = document.querySelectorAll("#buttons");
 let playGameButton = document.querySelector('#play');
 let p1Name = document.querySelector('#p1name');
@@ -37,7 +32,12 @@ function startGame(e){
     e.preventDefault();
     p1NameValue = p1Name.value;
     p2NameValue = p2Name.value;
-    if (p1NameValue === undefined || p2NameValue === undefined ){
+    console.log(p1NameValue);
+    console.log(p2NameValue);
+    if (p1NameValue === undefined ||
+        p2NameValue === undefined ||
+        p1NameValue === "" ||
+        p2NameValue === ""){
         alert("Enter player name(s)");
     }
 
