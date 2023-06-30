@@ -1,5 +1,14 @@
-const  boardFields = document.querySelectorAll(".board-field");
+//import {p1NameValue, p2NameValue} from '../Scripts/welcome.js'
 
+//console.log(p1NameValue);
+//console.log(p2NameValue);
+
+const boardFields = document.querySelectorAll(".board-field");
+const reset = document.querySelector("#reset");
+let score = {
+    p1score: 0,
+    p2score: 0
+}
 
 //board module
 function GameBoard() {
@@ -84,7 +93,13 @@ function GameController(a, playerOne = "Jim", playerTwo= "John") {
     }
 }
 
+function resetGame(e){
+    e.preventDefault();
+    window.location.href="../index.html";
+    score.p1score = 0;
+    score.p2score = 0;
+}
 
 
 Array.from(boardFields).forEach((button) => button.addEventListener('click', GameController));
-
+reset.addEventListener('click', resetGame)

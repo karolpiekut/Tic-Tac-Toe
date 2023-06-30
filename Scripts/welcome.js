@@ -2,10 +2,10 @@ let gameSelectionTypeButtons = document.querySelectorAll("#buttons");
 let playGameButton = document.querySelector('#play');
 let p1Name = document.querySelector('#p1name');
 let p2Name = document.querySelector('#p2name');
-let p1NameValue;
-let p2NameValue;
+export let p1NameValue, p2NameValue;
 let gameStateSelection = 0;
 playGameButton.disabled = true;
+
 
 
 function gameSelection(e){
@@ -39,11 +39,14 @@ function startGame(e){
         p1NameValue === "" ||
         p2NameValue === ""){
         alert("Enter player name(s)");
+    } else {
+        window.location.href="Game/game.html";
     }
-
 }
 
 Array.from(gameSelectionTypeButtons).forEach((button) => button.addEventListener('click', gameSelection));
 playGameButton.addEventListener('click', startGame);
+
+
 
 
