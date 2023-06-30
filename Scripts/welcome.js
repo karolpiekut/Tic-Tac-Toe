@@ -2,11 +2,15 @@ let gameSelectionTypeButtons = document.querySelectorAll("#buttons");
 let playGameButton = document.querySelector('#play');
 let p1Name = document.querySelector('#p1name');
 let p2Name = document.querySelector('#p2name');
-export let p1NameValue, p2NameValue;
+let p1NameValue;
+let p2NameValue;
+
+
 let gameStateSelection = 0;
 playGameButton.disabled = true;
 
-
+sessionStorage.setItem("p1NameValue", p1NameValue);
+sessionStorage.setItem("p2NameValue", p2NameValue);
 
 function gameSelection(e){
     if (e.target.value === "pvp") {
@@ -26,14 +30,12 @@ function gameSelection(e){
     }
 }
 
-
-
 function startGame(e){
     e.preventDefault();
     p1NameValue = p1Name.value;
     p2NameValue = p2Name.value;
-    console.log(p1NameValue);
-    console.log(p2NameValue);
+    localStorage.setItem('lclp1', p1NameValue);
+    localStorage.setItem('lclp2', p2NameValue);
     if (p1NameValue === undefined ||
         p2NameValue === undefined ||
         p1NameValue === "" ||
@@ -43,6 +45,8 @@ function startGame(e){
         window.location.href="Game/game.html";
     }
 }
+
+
 
 Array.from(gameSelectionTypeButtons).forEach((button) => button.addEventListener('click', gameSelection));
 playGameButton.addEventListener('click', startGame);

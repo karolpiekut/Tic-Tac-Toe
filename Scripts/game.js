@@ -1,7 +1,12 @@
-//import {p1NameValue, p2NameValue} from '../Scripts/welcome.js'
+const lclp1 = localStorage.getItem("lclp1");
+const lclp2 = localStorage.getItem("lclp2");
 
-//console.log(p1NameValue);
-//console.log(p2NameValue);
+const p1nameField = document.querySelector("#p1nameField")
+const p2nameField = document.querySelector("#p2nameField")
+
+p1nameField.innerText = lclp1 + ":";
+p2nameField.innerText = lclp2 + ":";
+
 
 const boardFields = document.querySelectorAll(".board-field");
 const reset = document.querySelector("#reset");
