@@ -103,6 +103,7 @@ function resetGame(e){
     window.location.href="../index.html";
     score.p1score = 0;
     score.p2score = 0;
+    localStorage.clear();
 }
 
 
