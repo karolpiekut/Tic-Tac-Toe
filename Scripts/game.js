@@ -24,6 +24,21 @@ let score = {
     p2score: 0
 }
 
+let players =
+    {
+        player1: {
+            name: lclp1,
+            symbol: 0
+        },
+        player2: {
+            name: lclp2,
+            symbol: 1
+        }
+    }
+
+let playerTurn = players.player1;
+
+
 
 //***********************Game Modules***********************
 
@@ -54,43 +69,54 @@ function GameController(a, playerOne = lclp1, playerTwo= lclp2) {
         }
         return board;
     }
-
-    const players = [
+/*
+    let players =
         {
-            name: playerOne,
-            symbol: 0
-        },
-        {
-            name: playerTwo,
-            symbol: 1
+            player1: {
+                name: playerOne,
+                symbol: 0
+            },
+            player2: {
+                name: playerTwo,
+                symbol: 1
+            }
         }
-    ];
 
-    let playerTurn = players[0];
-
-
-    function changeTurn() {
-        if (playerTurn.symbol === 0) {
-            playerTurn = players[1];
-        } else {
-            playerTurn = players[0];
-        }
+    let playerTurn = players.player1;
+*/
+    const changeTurn = () => {
+        playerTurn = playerTurn === players.player1 ? players.player2 : players.player1;
     }
 
-    console.log(a);
-    console.log(playerOne);
-    console.log(playerTwo);
+    changeTurn();
+    console.log(playerTurn);
+/*
+    function winLogic() {
+        /*
+        tl tm tr
+        ml mm mr
+        bl bm br
 
-    let board = GameBoard();
+        if
+
+
+    }
+
+
+
+    //let board = GameBoard();
+
+
+
 
 
     switch (a.target.value) {
         case 'tl' :
             board[0][0] = 'x';
-            console.log(playerTurn);
-            a.target.appendChild(xImg);
-            changeTurn();
-            console.log(playerTurn);
+            //console.log(playerTurn);
+            //a.target.appendChild(xImg);
+            //changeTurn();
+            //console.log(playerTurn);
             break;
         case 'tm' :
             board[0][1] = 'x';
@@ -124,12 +150,11 @@ function GameController(a, playerOne = lclp1, playerTwo= lclp2) {
             board[2][2] = 'x';
             a.target.appendChild(xImg);
             break;
-    }
-    console.log(board);
+    }*/
 }
 
 
-
+//**************************************************************
 
 function resetGame(e){
     e.preventDefault();
@@ -138,8 +163,6 @@ function resetGame(e){
     score.p2score = 0;
     localStorage.clear();
 }
-
-
 
 //***********************Event Listeners***********************
 Array.from(boardFields).forEach((button) => button.addEventListener('click', GameController));
