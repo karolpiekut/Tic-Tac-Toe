@@ -7,10 +7,10 @@ const reset = document.querySelector('#reset');
 //***********************Global Variables (temp)***********************
 
 //show player names
-const lclp1 = localStorage.getItem('lclp1');
-const lclp2 = localStorage.getItem('lclp2');
-p1nameField.innerText = lclp1 + ':';
-p2nameField.innerText = lclp2 + ':';
+const localP1 = localStorage.getItem('localP1');
+const localP2 = localStorage.getItem('localP2');
+p1nameField.innerText = localP1 + ':';
+p2nameField.innerText = localP2 + ':';
 
 //load x/o images
 const xImg = document.createElement('img');
@@ -27,130 +27,95 @@ let score = {
 let players =
     {
         player1: {
-            name: lclp1,
+            name: localP1,
             symbol: 0
         },
         player2: {
-            name: lclp2,
+            name: localP2,
             symbol: 1
         }
     }
 
 let playerTurn = players.player1;
 
-
-
 //***********************Game Modules***********************
-
-//board module
-
-
-
-/*
-function PushValue() {
-    let userValue;
-
-
-
-    return userValue;
-}
-
-*/
-function GameController(a, playerOne = lclp1, playerTwo= lclp2) {
-    function GameBoard() {
-        const rows = 3;
-        const columns = 3;
-        const board = [];
-        for (let i = 0; i < rows; i++) {
-            board[i] = [];
-            for (let j = 0; j < columns; j++) {
-                board[i].push('');
-            }
-        }
-        return board;
+function GameController(a, playerOne = localP1, playerTwo= localP2) {
+    const gameBoard = {
+        tl: 0, tm: 0, tr: 0,
+        ml: 0, mm: 0, mr: 0,
+        bl: 0, bm: 0, br: 0
     }
-/*
-    let players =
-        {
-            player1: {
-                name: playerOne,
-                symbol: 0
-            },
-            player2: {
-                name: playerTwo,
-                symbol: 1
-            }
-        }
 
-    let playerTurn = players.player1;
-*/
+    const winLogic = () => {
+        let one = gameBoard.tl + gameBoard.tm + gameBoard.tr;
+        let two = gameBoard.ml + gameBoard.mm + gameBoard.mr;
+        let three = gameBoard.bl + gameBoard.bm + gameBoard.br;
+        let four = gameBoard.tl + gameBoard.ml + gameBoard.bl;
+        let five = gameBoard.tm + gameBoard.mm + gameBoard.bm;
+        let six = gameBoard.tr + gameBoard.mr + gameBoard.br;
+        let seven = gameBoard.tl + gameBoard.mm + gameBoard.br;
+        let eight = gameBoard.tr + gameBoard.mm + gameBoard.bl;
+        return [one, two, three, four, five, six, seven, eight];
+    }
+
+    let newGame = winLogic();  //test
+
+    function checkWin(winScenario) {
+        const p1win = (element) => element === 3;
+        const p2win = (element) => element === 6;
+        if (winScenario.some(p1win)) {
+            console.log("P1 WINS");
+        } else if(winScenario.some(p2win)) {
+            console.log("P2 WINS");
+        }
+    }
+
+    checkWin(newGame); //test
+
+
     const changeTurn = () => {
         playerTurn = playerTurn === players.player1 ? players.player2 : players.player1;
     }
 
-    changeTurn();
-    console.log(playerTurn);
-/*
-    function winLogic() {
-        /*
-        tl tm tr
-        ml mm mr
-        bl bm br
-
-        if
-
-
-    }
-
-
-
-    //let board = GameBoard();
-
-
-
-
 
     switch (a.target.value) {
         case 'tl' :
-            board[0][0] = 'x';
-            //console.log(playerTurn);
-            //a.target.appendChild(xImg);
-            //changeTurn();
-            //console.log(playerTurn);
+            gameBoard.tl = 'x';
+            a.target.appendChild(xImg);
             break;
         case 'tm' :
-            board[0][1] = 'x';
+            gameBoard.tm = 'x';
             a.target.appendChild(xImg);
             break;
         case 'tr' :
-            board[0][2] = 'x';
+            gameBoard.tr = 'x';
             a.target.appendChild(xImg);
             break;
         case 'ml' :
-            board[1][0] = 'x';
+            gameBoard.ml = 'x';
             a.target.appendChild(xImg);
             break;
         case 'mm' :
-            board[1][1] = 'x';
+            gameBoard.mm = 'x';
             a.target.appendChild(xImg);
             break;
         case 'mr' :
-            board[1][2] = 'x';
+            gameBoard.mr = 'x';
             a.target.appendChild(xImg);
             break;
         case 'bl' :
-            board[2][0] = 'x';
+            gameBoard.bl = 'x';
             a.target.appendChild(xImg);
             break;
         case 'bm' :
-            board[2][1] = 'x';
+            gameBoard.bm = 'x';
             a.target.appendChild(xImg);
             break;
         case 'br' :
-            board[2][2] = 'x';
+            gameBoard.br = 'x';
             a.target.appendChild(xImg);
             break;
-    }*/
+    }
 }
 
 
@@ -158,7 +123,7 @@ function GameController(a, playerOne = lclp1, playerTwo= lclp2) {
 
 function resetGame(e){
     e.preventDefault();
-    window.location.href='../index.html';
+    window.location.href = '../index.html';
     score.p1score = 0;
     score.p2score = 0;
     localStorage.clear();

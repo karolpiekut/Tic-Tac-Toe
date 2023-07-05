@@ -34,8 +34,8 @@ function startGame(e){
     e.preventDefault();
     p1NameValue = p1Name.value;
     p2NameValue = p2Name.value;
-    localStorage.setItem('lclp1', p1NameValue);
-    localStorage.setItem('lclp2', p2NameValue);
+    localStorage.setItem('localP1', p1NameValue);
+    localStorage.setItem('localP2', p2NameValue);
     if (p1NameValue === undefined ||
         p2NameValue === undefined ||
         p1NameValue === "" ||
