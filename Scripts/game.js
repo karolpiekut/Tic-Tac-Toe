@@ -1,4 +1,4 @@
-function theGame() {
+(function () {
     //***********************Query Selectors***********************
     const p1nameField = document.querySelector('#p1nameField')
     const p2nameField = document.querySelector('#p2nameField')
@@ -10,6 +10,7 @@ function theGame() {
     const localP2 = localStorage.getItem('localP2');
     p1nameField.innerText = localP1 + ':';
     p2nameField.innerText = localP2 + ':';
+    const gameStateValue = localStorage.getItem('gameStateValue'); //single or multiplayer value
 
 //load x/o images
     const xImg = document.createElement('img');
@@ -137,6 +138,4 @@ function theGame() {
 //***********************Event Listeners***********************
     Array.from(boardFields).forEach((button) => button.addEventListener('click', GameController));
     reset.addEventListener('click', resetGame)
-}
-
-theGame();
+})();
