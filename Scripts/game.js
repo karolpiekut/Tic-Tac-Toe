@@ -17,36 +17,35 @@ function theGame() {
     oImg.src = '../Resources/o.svg';
     xImg.src = '../Resources/x.svg';
 
+
+//game board
+    const gameBoard = {
+        tl: 0, tm: 0, tr: 0,
+        ml: 0, mm: 0, mr: 0,
+        bl: 0, bm: 0, br: 0
+    }
+
 //score fields
     let score = {
         p1score: 0,
         p2score: 0
     }
 
-    let players =
-        {
-            player1: {
-                name: localP1,
-                symbol: 0
-            },
-            player2: {
-                name: localP2,
-                symbol: 1
-            }
+    let players = {
+        player1: {
+            name: localP1,
+            symbol: 1
+        },
+        player2: {
+            name: localP2,
+            symbol: 2
         }
-
-    let playerTurn = players.player1;
+    }
 
 //***********************Game Modules***********************
     function GameController(a, playerOne = localP1, playerTwo = localP2) {
-
-
-        const gameBoard = {
-            tl: 0, tm: 0, tr: 0,
-            ml: 0, mm: 0, mr: 0,
-            bl: 0, bm: 0, br: 0
-        }
-
+        let playerTurn = players.player1;
+        //done
         const winLogic = () => {
             let one = gameBoard.tl + gameBoard.tm + gameBoard.tr;
             let two = gameBoard.ml + gameBoard.mm + gameBoard.mr;
@@ -70,58 +69,63 @@ function theGame() {
                 console.log("P2 WINS");
             }
         }
-
-
         checkWin(newGame); //test
 
         const changeTurn = () => {
             playerTurn = playerTurn === players.player1 ? players.player2 : players.player1;
         }
 
+        console.log(a.target.value);
 
-        switch (a.target.value) {
-            case 'tl' :
-                gameBoard.tl = 'x';
-                a.target.appendChild(xImg);
-                break;
-            case 'tm' :
-                gameBoard.tm = 'x';
-                a.target.appendChild(xImg);
-                break;
-            case 'tr' :
-                gameBoard.tr = 'x';
-                a.target.appendChild(xImg);
-                break;
-            case 'ml' :
-                gameBoard.ml = 'x';
-                a.target.appendChild(xImg);
-                break;
-            case 'mm' :
-                gameBoard.mm = 'x';
-                a.target.appendChild(xImg);
-                break;
-            case 'mr' :
-                gameBoard.mr = 'x';
-                a.target.appendChild(xImg);
-                break;
-            case 'bl' :
-                gameBoard.bl = 'x';
-                a.target.appendChild(xImg);
-                break;
-            case 'bm' :
-                gameBoard.bm = 'x';
-                a.target.appendChild(xImg);
-                break;
-            case 'br' :
-                gameBoard.br = 'x';
-                a.target.appendChild(xImg);
-                break;
+            switch (a.target.value) {
+                case 'tl' :
+                    gameBoard.tl = 'x';
+                    a.target.appendChild(xImg);
+                    break;
+                case 'tm' :
+                    gameBoard.tm = 'x';
+                    a.target.appendChild(xImg);
+                    break;
+                case 'tr' :
+                    gameBoard.tr = 'x';
+                    a.target.appendChild(xImg);
+                    break;
+                case 'ml' :
+                    gameBoard.ml = 'x';
+                    a.target.appendChild(xImg);
+                    break;
+                case 'mm' :
+                    gameBoard.mm = 'x';
+                    a.target.appendChild(xImg);
+                    break;
+                case 'mr' :
+                    gameBoard.mr = 'x';
+                    a.target.appendChild(xImg);
+                    break;
+                case 'bl' :
+                    gameBoard.bl = 'x';
+                    a.target.appendChild(xImg);
+                    break;
+                case 'bm' :
+                    gameBoard.bm = 'x';
+                    a.target.appendChild(xImg);
+                    break;
+                case 'br' :
+                    gameBoard.br = 'x';
+                    a.target.appendChild(xImg);
+                    break;
+            }
         }
+
+
+
+
+
+    function screenController() {
+
     }
 
-
 //**************************************************************
-
     function resetGame(e) {
         e.preventDefault();
         window.location.href = '../index.html';
