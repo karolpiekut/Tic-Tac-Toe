@@ -41,7 +41,7 @@
         },
         player2: {
             name: localP2,
-            symbol: 2
+            symbol: 4
         }
     }
     
@@ -62,11 +62,11 @@
         let eight = gameBoard.tr + gameBoard.mm + gameBoard.bl;
         return [one, two, three, four, five, six, seven, eight];
     }
-    
+
     //check win logic
     function checkWin(winScenario) {
         const p1win = (element) => element === 3;
-        const p2win = (element) => element === 6;
+        const p2win = (element) => element === 12;
         if (winScenario.some(p1win)) {
             console.log("P1 WINS");
             //need more code here!!!!!!!
@@ -80,88 +80,49 @@
     let playerTurn = players.player1;
 //***********************Game Modules***********************
     function GameController(a) {
-        let targetValue = a.target.value;
         function gameRound() {
-            console.log(targetValue);
-            if (targetValue === 'tl' && gameBoard.tl === 0) {
-                console.log(targetValue);
+            if (a.target.value === 'tl' && gameBoard.tl === 0) {
                 gameBoard.tl = playerTurn.symbol;
-                a.target.appendChild(xImg);
-                changeTurn();
-                console.log(gameBoard);
-            } else if (targetValue === 'tm' && gameBoard.tm === 0) {
+                //a.target.appendChild(xImg);
+            } else if (a.target.value === 'tm' && gameBoard.tm === 0) {
                 gameBoard.tm = playerTurn.symbol;
-                a.target.appendChild(xImg);
-                changeTurn();
-                console.log(gameBoard);
+                //a.target.appendChild(xImg);
+            } else if (a.target.value === 'tr' && gameBoard.tr === 0) {
+                gameBoard.tr = playerTurn.symbol;
+                //a.target.appendChild(xImg);
+            } else if (a.target.value === 'ml'&& gameBoard.ml === 0) {
+                gameBoard.ml = playerTurn.symbol;
+                //a.target.appendChild(xImg);
+            } else if (a.target.value === 'mm'&& gameBoard.mm === 0) {
+                gameBoard.mm = playerTurn.symbol;
+                //a.target.appendChild(xImg);
+            } else if (a.target.value === 'mr'&& gameBoard.mr === 0) {
+                gameBoard.mr = playerTurn.symbol;
+                //a.target.appendChild(xImg);
+            } else if (a.target.value === 'bl'&& gameBoard.bl === 0) {
+                gameBoard.bl = playerTurn.symbol;
+                //a.target.appendChild(xImg);
+            } else if (a.target.value === 'bm'&& gameBoard.bm === 0) {
+                gameBoard.bm = playerTurn.symbol;
+                //a.target.appendChild(xImg);
+            } else if (a.target.value === 'br' && gameBoard.br === 0) {
+                gameBoard.br = playerTurn.symbol;
+                ////a.target.appendChild(xImg);
             } else {
-                alert("please select a valid field");
+                console.log("pick the right field");
             }
-
-
-            /*
-            switch (a.target.value) {
-                case 'tl':
-                case gameBoard.tl === 0:
-                    gameBoard.tl = playerTurn.symbol;
-                    a.target.appendChild(xImg);
-                    changeTurn();
-                    console.log(gameBoard);
-                    break;
-                case 'tm':
-                case gameBoard.tm === 0:
-                    gameBoard.tm = playerTurn.symbol;
-                    a.target.appendChild(xImg);
-                    changeTurn();
-                    console.log(gameBoard);
-                    break;
-                case ('tr' && gameBoard.tr === 0) :
-                    gameBoard.tr = playerTurn.symbol;
-                    a.target.appendChild(xImg);
-                    changeTurn();
-                    break;
-                case ('ml'&& gameBoard.ml === 0) :
-                    gameBoard.ml = playerTurn.symbol;
-                    a.target.appendChild(xImg);
-                    changeTurn();
-                    break;
-                case ('mm'&& gameBoard.mm === 0) :
-                    gameBoard.mm = playerTurn.symbol;
-                    a.target.appendChild(xImg);
-                    changeTurn();
-                    break;
-                case ('mr'&& gameBoard.mr === 0) :
-                    gameBoard.mr = playerTurn.symbol;
-                    a.target.appendChild(xImg);
-                    changeTurn();
-                    break;
-                case ('bl'&& gameBoard.bl === 0) :
-                    gameBoard.bl = playerTurn.symbol;
-                    a.target.appendChild(xImg);
-                    changeTurn();
-                    break;
-                case ('bm'&& gameBoard.bm === 0) :
-                    gameBoard.bm = playerTurn.symbol;
-                    a.target.appendChild(xImg);
-                    changeTurn();
-                    break;
-                case ('br'&& gameBoard.br === 0) :
-                    gameBoard.br = playerTurn.symbol;
-                    a.target.appendChild(xImg);
-                    changeTurn();
-                    break;
-                default:
-                    alert("please select a valid field");
-            }
-
-             */
         }
+
+        console.table(winLogic());
+        console.table(gameBoard);
+        checkWin(winLogic());
+        changeTurn();
         gameRound();
+
     }
         
 /*
     function screenController() {
-
     }
 */
     
