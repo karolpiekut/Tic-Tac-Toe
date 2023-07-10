@@ -3,7 +3,7 @@
     const p1nameField = document.querySelector('#p1nameField');
     const p2nameField = document.querySelector('#p2nameField');
     const p1ScoreField = document.querySelector('#p1score-number');
-    const p2ScoreField = document.querySelector('#p2score-number')
+    const p2ScoreField = document.querySelector('#p2score-number');
     const boardFields = document.querySelectorAll('.board-field');
     const reset = document.querySelector('#reset');
 
@@ -31,6 +31,11 @@
     let score = {
         p1score: 0,
         p2score: 0
+    }
+
+    function updateScoreBoard() {
+        p1ScoreField.innerText = score.p1score;
+        p2ScoreField.innerText = score.p2score;
     }
 
     //players
@@ -69,9 +74,12 @@
         const p2win = (element) => element === 12;
         if (winScenario.some(p1win)) {
             console.log("P1 WINS");
-            //need more code here!!!!!!!
+            score.p1score ++;
+            updateScoreBoard();
         } else if (winScenario.some(p2win)) {
             console.log("P2 WINS");
+            score.p2score ++;
+            updateScoreBoard();
             //need more code here!!!!!!!
         }
     }
@@ -84,41 +92,53 @@
             if (a.target.value === 'tl' && gameBoard.tl === 0) {
                 gameBoard.tl = playerTurn.symbol;
                 //a.target.appendChild(xImg);
+                checkWin(winLogic());
+                changeTurn();
             } else if (a.target.value === 'tm' && gameBoard.tm === 0) {
                 gameBoard.tm = playerTurn.symbol;
                 //a.target.appendChild(xImg);
+                checkWin(winLogic());
+                changeTurn();
             } else if (a.target.value === 'tr' && gameBoard.tr === 0) {
                 gameBoard.tr = playerTurn.symbol;
                 //a.target.appendChild(xImg);
+                checkWin(winLogic());
+                changeTurn();
             } else if (a.target.value === 'ml'&& gameBoard.ml === 0) {
                 gameBoard.ml = playerTurn.symbol;
                 //a.target.appendChild(xImg);
+                checkWin(winLogic());
+                changeTurn();
             } else if (a.target.value === 'mm'&& gameBoard.mm === 0) {
                 gameBoard.mm = playerTurn.symbol;
                 //a.target.appendChild(xImg);
+                checkWin(winLogic());
+                changeTurn();
             } else if (a.target.value === 'mr'&& gameBoard.mr === 0) {
                 gameBoard.mr = playerTurn.symbol;
                 //a.target.appendChild(xImg);
+                checkWin(winLogic());
+                changeTurn();
             } else if (a.target.value === 'bl'&& gameBoard.bl === 0) {
                 gameBoard.bl = playerTurn.symbol;
                 //a.target.appendChild(xImg);
+                checkWin(winLogic());
+                changeTurn();
             } else if (a.target.value === 'bm'&& gameBoard.bm === 0) {
                 gameBoard.bm = playerTurn.symbol;
                 //a.target.appendChild(xImg);
+                checkWin(winLogic());
+                changeTurn();
             } else if (a.target.value === 'br' && gameBoard.br === 0) {
                 gameBoard.br = playerTurn.symbol;
                 ////a.target.appendChild(xImg);
+                checkWin(winLogic());
+                changeTurn();
             } else {
                 console.log("pick the right field");
             }
         }
-
-        console.table(winLogic());
-        console.table(gameBoard);
-        checkWin(winLogic());
-        changeTurn();
         gameRound();
-
     }
         
 /*
