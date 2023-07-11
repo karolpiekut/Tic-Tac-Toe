@@ -1,5 +1,4 @@
 (function () {
-    //***********************Query Selectors***********************
     const p1nameField = document.querySelector('#p1nameField');
     const p2nameField = document.querySelector('#p2nameField');
     const p1ScoreField = document.querySelector('#p1score-number');
@@ -20,12 +19,25 @@
     oImg.src = '../Resources/o.svg';
     xImg.src = '../Resources/x.svg';
 
-    //game board
-    const gameBoard = {
-        tl: 0, tm: 0, tr: 0,
-        ml: 0, mm: 0, mr: 0,
-        bl: 0, bm: 0, br: 0
+    //reset game
+    function resetGame(e) {
+        e.preventDefault();
+        window.location.href = '../index.html';
+        score.p1score = 0;
+        score.p2score = 0;
+        localStorage.clear();
     }
+
+    //game board
+    function createGameBoard()  {
+        return {
+            tl: 0, tm: 0, tr: 0,
+            ml: 0, mm: 0, mr: 0,
+            bl: 0, bm: 0, br: 0
+        }
+    }
+
+    let gameBoard = createGameBoard();
 
     //score fields
     let score = {
@@ -38,7 +50,6 @@
         p2ScoreField.innerText = score.p2score;
     }
 
-    //players
     let players = {
         player1: {
             name: localP1,
@@ -49,13 +60,11 @@
             symbol: 4
         }
     }
-    
-     //change turn logic
+
     const changeTurn = () => {
         playerTurn = playerTurn === players.player1 ? players.player2 : players.player1;
     }
-    
-    //win logic
+
     const winLogic = () => {
         let one = gameBoard.tl + gameBoard.tm + gameBoard.tr;
         let two = gameBoard.ml + gameBoard.mm + gameBoard.mr;
@@ -68,7 +77,6 @@
         return [one, two, three, four, five, six, seven, eight];
     }
 
-    //check win logic
     function checkWin(winScenario) {
         const p1win = (element) => element === 3;
         const p2win = (element) => element === 12;
@@ -76,17 +84,17 @@
             console.log("P1 WINS");
             score.p1score ++;
             updateScoreBoard();
+            gameBoard = createGameBoard();
         } else if (winScenario.some(p2win)) {
             console.log("P2 WINS");
             score.p2score ++;
             updateScoreBoard();
-            //need more code here!!!!!!!
+            gameBoard = createGameBoard();
         }
     }
 
-    //player starts;
     let playerTurn = players.player1;
-//***********************Game Modules***********************
+
     function GameController(a) {
         function gameRound() {
             if (a.target.value === 'tl' && gameBoard.tl === 0) {
@@ -145,16 +153,7 @@
     function screenController() {
     }
 */
-    
 
-//**************************************************************
-    function resetGame(e) {
-        e.preventDefault();
-        window.location.href = '../index.html';
-        score.p1score = 0;
-        score.p2score = 0;
-        localStorage.clear();
-    }
 
 //***********************Event Listeners***********************
     Array.from(boardFields).forEach((button) => button.addEventListener('click', GameController));
