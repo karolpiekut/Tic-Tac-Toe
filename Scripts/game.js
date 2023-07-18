@@ -91,11 +91,13 @@
             }
 
             if (winScenario.some(p1win)) {
+                alert(`${localP1} WINS!`)
                 score.p1score ++;
                 updateScoreBoard();
                 gameBoard = createGameBoard();
                 removeXO();
             } else if (winScenario.some(p2win)) {
+                alert(`${localP2} WINS!`)
                 score.p2score ++;
                 updateScoreBoard();
                 gameBoard = createGameBoard();
