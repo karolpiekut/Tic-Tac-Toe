@@ -18,7 +18,6 @@
     const oImg = document.createElement('img');
     oImg.src = '../Resources/o.svg';
     xImg.src = '../Resources/x.svg';
-
     //reset game
     function resetGame(e) {
         e.preventDefault();
@@ -27,7 +26,6 @@
         score.p2score = 0;
         localStorage.clear();
     }
-
     //game board
     function createGameBoard()  {
         return {
@@ -36,18 +34,15 @@
             bl: 0, bm: 0, br: 0
         }
     }
-
     //score fields
     let score = {
         p1score: 0,
         p2score: 0
     }
-
     function updateScoreBoard() {
         p1ScoreField.innerText = score.p1score;
         p2ScoreField.innerText = score.p2score;
     }
-
     let players = {
         player1: {
             name: localP1,
@@ -62,11 +57,9 @@
             pic: oImg
         }
     }
-
     const changeTurn = () => {
         playerTurn = playerTurn === players.player1 ? players.player2 : players.player1;
     }
-
     const winLogic = () => {
         let one = gameBoard.tl + gameBoard.tm + gameBoard.tr;
         let two = gameBoard.ml + gameBoard.mm + gameBoard.mr;
@@ -78,81 +71,91 @@
         let eight = gameBoard.tr + gameBoard.mm + gameBoard.bl;
         return [one, two, three, four, five, six, seven, eight];
     }
-
     let playerTurn = players.player1;
-
     let gameBoard = createGameBoard();
+
+    function removeXO() {
+        const imgXO = document.getElementsByTagName('img');
+        Array.from(imgXO).forEach((img) => img.remove());
+    }
 
     function GameController(a) {
         function checkWin(winScenario) {
+            let boardFields = [];
+            const zeroValue = (element) => element === 0;
             const p1win = (element) => element === 3;
             const p2win = (element) => element === 12;
+            const draw = (element) => element !== 3 || element !== 12;
+            for (const i in gameBoard) {
+                boardFields.push(gameBoard[i]);
+            }
+
             if (winScenario.some(p1win)) {
-                console.log("P1 WINS");
                 score.p1score ++;
                 updateScoreBoard();
                 gameBoard = createGameBoard();
-                console.table(gameBoard);
+                removeXO();
             } else if (winScenario.some(p2win)) {
-                console.log("P2 WINS");
                 score.p2score ++;
                 updateScoreBoard();
                 gameBoard = createGameBoard();
-                console.table(gameBoard)
+                removeXO();
+            } else if (winScenario.some(draw) && !boardFields.some(zeroValue)) {
+                alert("DRAW");
+                gameBoard = createGameBoard();
+                removeXO();
             }
-        }
 
+        }
             if (a.target.value === 'tl' && gameBoard.tl === 0) {
-                gameBoard.tl = playerTurn.symbol;
                 a.target.appendChild(playerTurn.pic.cloneNode(true));
+                gameBoard.tl = playerTurn.symbol;
                 checkWin(winLogic());
                 changeTurn();
             } else if (a.target.value === 'tm' && gameBoard.tm === 0) {
-                gameBoard.tm = playerTurn.symbol;
                 a.target.appendChild(playerTurn.pic.cloneNode(true));
+                gameBoard.tm = playerTurn.symbol;
                 checkWin(winLogic());
                 changeTurn();
             } else if (a.target.value === 'tr' && gameBoard.tr === 0) {
-                gameBoard.tr = playerTurn.symbol;
                 a.target.appendChild(playerTurn.pic.cloneNode(true));
+                gameBoard.tr = playerTurn.symbol;
                 checkWin(winLogic());
                 changeTurn();
             } else if (a.target.value === 'ml'&& gameBoard.ml === 0) {
-                gameBoard.ml = playerTurn.symbol;
                 a.target.appendChild(playerTurn.pic.cloneNode(true));
+                gameBoard.ml = playerTurn.symbol;
                 checkWin(winLogic());
                 changeTurn();
             } else if (a.target.value === 'mm'&& gameBoard.mm === 0) {
-                gameBoard.mm = playerTurn.symbol;
                 a.target.appendChild(playerTurn.pic.cloneNode(true));
+                gameBoard.mm = playerTurn.symbol;
                 checkWin(winLogic());
                 changeTurn();
             } else if (a.target.value === 'mr'&& gameBoard.mr === 0) {
-                gameBoard.mr = playerTurn.symbol;
                 a.target.appendChild(playerTurn.pic.cloneNode(true));
+                gameBoard.mr = playerTurn.symbol;
                 checkWin(winLogic());
                 changeTurn();
             } else if (a.target.value === 'bl'&& gameBoard.bl === 0) {
-                gameBoard.bl = playerTurn.symbol;
                 a.target.appendChild(playerTurn.pic.cloneNode(true));
+                gameBoard.bl = playerTurn.symbol;
                 checkWin(winLogic());
                 changeTurn();
             } else if (a.target.value === 'bm'&& gameBoard.bm === 0) {
-                gameBoard.bm = playerTurn.symbol;
                 a.target.appendChild(playerTurn.pic.cloneNode(true));
+                gameBoard.bm = playerTurn.symbol;
                 checkWin(winLogic());
                 changeTurn();
             } else if (a.target.value === 'br' && gameBoard.br === 0) {
-                gameBoard.br = playerTurn.symbol;
                 a.target.appendChild(playerTurn.pic.cloneNode(true));
+                gameBoard.br = playerTurn.symbol;
                 checkWin(winLogic());
                 changeTurn();
             } else {
                 console.log("pick the right field");
             }
     }
-
-
     //event listeners
     Array.from(boardFields).forEach((button) => button.addEventListener('click', GameController));
     reset.addEventListener('click', resetGame)
